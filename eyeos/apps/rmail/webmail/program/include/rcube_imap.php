@@ -3362,7 +3362,7 @@ class rcube_imap
     function decode_header($input, $remove_quotes=false)
     {
         $str = rcube_imap::decode_mime_string((string)$input, $this->default_charset);
-        if ($str{0}=='"' && $remove_quotes)
+        if ($str[0]=='"' && $remove_quotes)
             $str = str_replace('"', '', $str);
     
         return $str;

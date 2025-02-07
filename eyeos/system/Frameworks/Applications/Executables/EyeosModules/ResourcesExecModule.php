@@ -47,7 +47,7 @@ class ResourcesExecModule implements IEyeosExecutableModule {
         $categories = array();
         if ($handle = opendir('extern/images/'.$size)) {
             while (false !== ($file = readdir($handle))) {
-                if($file{0} != '.') {
+                if($file[0]!= '.') {
                     $categories[] = $file;
                 }
                 
@@ -63,7 +63,7 @@ class ResourcesExecModule implements IEyeosExecutableModule {
         $icons = array();
         if ($handle = opendir('extern/images/'.$size.'/'.$cat)) {
             while (false !== ($file = readdir($handle))) {
-                if($file{0} != '.') {
+                if($file[0]!= '.') {
                     $icons[] = $file;
                 }
 

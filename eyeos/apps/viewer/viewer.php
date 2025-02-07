@@ -39,7 +39,7 @@ abstract class ViewerApplication extends EyeosApplicationExecutable {
 			$dir = new DirectoryIterator($itemsPath);
 			foreach($dir as $file) {
 				$fileName = $file->getBasename();
-				if (!$file->isDot() && $fileName{0} != '.' && strchr($fileName, '.js')) {
+				if (!$file->isDot() && $fileName[0] != '.' && strchr($fileName, '.js')) {
 					$buffer .= file_get_contents($itemsPath . '/' . $fileName);
 				}
 			}

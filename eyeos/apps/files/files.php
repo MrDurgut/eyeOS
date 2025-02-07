@@ -9,7 +9,7 @@ abstract class FilesApplication extends EyeosApplicationExecutable {
 			$dir = new DirectoryIterator($itemsPath);
 			foreach($dir as $file) {
 				$fileName = $file->getBasename();
-				if (!$file->isDot() && $fileName{0} != '.' && strchr($fileName, '.js') && $fileName != 'eyeos.js') {
+				if (!$file->isDot() && $fileName[0] != '.' && strchr($fileName, '.js') && $fileName != 'eyeos.js') {
 					$buffer .= file_get_contents($itemsPath . '/' . $fileName);
 				}
 			}

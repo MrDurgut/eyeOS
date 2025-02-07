@@ -410,7 +410,7 @@ abstract class AdvancedPathLib {
 	 * @return boolean
 	 */
 	private static function glob_fnmatch($pattern, $filename) {
-		$hiddenFilesChar = ($pattern{0} === '.') ? '' : '[^\.]';
+		$hiddenFilesChar = ($pattern[0] === '.') ? '' : '[^\.]';
 		$pattern = strtr(preg_quote($pattern, '#'), array('\*' => '.*', '\?' => '.', '\[' => '[', '\]' => ']'));
 		return preg_match('#^' . $hiddenFilesChar . $pattern . '$#', $filename) > 0;
 	}
@@ -683,23 +683,23 @@ abstract class AdvancedPathLib {
 			throw new LengthException('Permission value ' . $perms . ' must be 10 characters long. (example: "-rwxr-xr--")');
 		}
 		$mode = 0;
-		if ($perms{1} == 'r') $mode += 0400;
-		if ($perms{2} == 'w') $mode += 0200;
-		if ($perms{3} == 'x') $mode += 0100;
-		elseif ($perms{3} == 's') $mode += 04100;
-		elseif ($perms{3} == 'S') $mode += 04000;
+		if ($perms[1]== 'r') $mode += 0400;
+		if ($perms[2] == 'w') $mode += 0200;
+		if ($perms[3] == 'x') $mode += 0100;
+		elseif ($perms[3] == 's') $mode += 04100;
+		elseif ($perms[3] == 'S') $mode += 04000;
 		
-		if ($perms{4} == 'r') $mode += 040;
-		if ($perms{5} == 'w') $mode += 020;
-		if ($perms{6} == 'x') $mode += 010;
-		elseif ($perms{6} == 's') $mode += 02010;
-		elseif ($perms{6} == 'S') $mode += 02000;
+		if ($perms[4] == 'r') $mode += 040;
+		if ($perms[5] == 'w') $mode += 020;
+		if ($perms[6] == 'x') $mode += 010;
+		elseif ($perms[6] == 's') $mode += 02010;
+		elseif ($perms[6] == 'S') $mode += 02000;
 		
-		if ($perms{7} == 'r') $mode += 04;
-		if ($perms{8} == 'w') $mode += 02;
-		if ($perms{9} == 'x') $mode += 01;
-		elseif ($perms{9} == 't') $mode += 01001;
-		elseif ($perms{9} == 'T') $mode += 01000;
+		if ($perms[7] == 'r') $mode += 04;
+		if ($perms[8] == 'w') $mode += 02;
+		if ($perms[9] == 'x') $mode += 01;
+		elseif ($perms[9] == 't') $mode += 01001;
+		elseif ($perms[9]== 'T') $mode += 01000;
 		return $mode;
 	}
 	

@@ -66,7 +66,7 @@ class EyeosApplicationsManager implements IApplicationsManager {
 		foreach ($directory as $fileInfo) {
 			$fileInfoName = $fileInfo->getFilename();
 
-			if ($fileInfo->isDir() && $fileInfoName{0} != '.') {
+			if ($fileInfo->isDir() && $fileInfoName[0] != '.') {
 				$applications[] = new EyeosApplicationDescriptor($fileInfoName);
 			}
 		}
@@ -179,7 +179,7 @@ class EyeosApplicationsManager implements IApplicationsManager {
 		foreach ($directory as $fileInfo) {
 			$fileInfoName = $fileInfo->getFilename();
 
-			if ($fileInfo->isDir() && $fileInfoName{0} != '.') {
+			if ($fileInfo->isDir() && $fileInfoName[0]!= '.') {
                                 if(!empty($input)) {
                                     $app = new EyeosApplicationDescriptor($fileInfoName);
                                     $meta = $app->getMeta();

@@ -36,7 +36,7 @@
 function lib_exceptions_load() {
 	if(!defined('PHP_VERSION_ID')) {
 	    $version = PHP_VERSION;
-	    define('PHP_VERSION_ID', ($version{0} * 10000 + $version{2} * 100 + $version{4}));
+	    define('PHP_VERSION_ID', ($version[0] * 10000 + $version[2] * 100 + $version[4]));
 	}
 
 	require LIB_EXCEPTIONS_PATH.'/IChainableException.php';

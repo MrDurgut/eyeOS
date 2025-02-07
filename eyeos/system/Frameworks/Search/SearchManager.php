@@ -58,7 +58,7 @@ class SearchManager {
 			$dir = new DirectoryIterator(FRAMEWORK_SEARCH_PLUGINS_PATH);
 			foreach ($dir as $subFile) {
 				$pluginName = $subFile->getFilename();
-				if ($subFile->isDir() && $pluginName{0} != '.') {	
+				if ($subFile->isDir() && $pluginName[0]!= '.') {	
 					if (is_file(FRAMEWORK_SEARCH_PLUGINS_PATH . '/' . $pluginName . '/' . $pluginName . '.php')) {
 						require FRAMEWORK_SEARCH_PLUGINS_PATH . '/' . $pluginName . '/' . $pluginName . '.php';
 						if (class_exists($pluginName)) {

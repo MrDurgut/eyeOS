@@ -63,7 +63,7 @@ $abstractPlugins = new DirectoryIterator(FRAMEWORK_SEARCH_PLUGINS_PATH);
 foreach ($abstractPlugins as $plugin) {
 	$fileName = $plugin->getFilename();
 
-	if ($plugin->isFile() && $fileName{0} != '.') {
+	if ($plugin->isFile() && $fileName[0] != '.') {
 		require FRAMEWORK_SEARCH_PLUGINS_PATH . '/' . $plugin->getFilename();
 	}
 }

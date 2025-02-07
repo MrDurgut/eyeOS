@@ -872,7 +872,7 @@ class rcmail
 
       if ($dh = @opendir(INSTALL_PATH . 'program/localization')) {
         while (($name = readdir($dh)) !== false) {
-          if ($name{0}=='.' || !is_dir(INSTALL_PATH . 'program/localization/' . $name))
+          if ($name[0]=='.' || !is_dir(INSTALL_PATH . 'program/localization/' . $name))
             continue;
 
           if ($label = $rcube_languages[$name])

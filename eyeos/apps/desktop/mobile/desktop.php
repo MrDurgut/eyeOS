@@ -38,7 +38,7 @@ abstract class DesktopMobileApplication extends EyeosApplicationExecutable {
 			$fileInfoName = $fileInfo->getFilename();
 			$mobilePath = EYE_ROOT . '/' . APPS_DIR . '/'. $fileInfo->getFilename() .  '/mobile';
 			
-			if ($fileInfo->isDir() && $fileInfoName{0} != '.' && is_dir($mobilePath)) {
+			if ($fileInfo->isDir() && $fileInfoName[0] != '.' && is_dir($mobilePath)) {
 				$appDesc = new EyeMobileApplicationDescriptor($fileInfoName);
 				$appMeta = $appDesc->getMeta();
 				$sysParams = $appMeta->get('eyeos.application.systemParameters');
@@ -64,7 +64,7 @@ abstract class DesktopMobileApplication extends EyeosApplicationExecutable {
 			$fileInfoName = $fileInfo->getFilename();
 			$mobilePath = EYE_ROOT . '/' . APPS_DIR . '/'. $fileInfo->getFilename() .  '/mobile';
 			
-			if ($fileInfo->isDir() && $fileInfoName{0} != '.' && is_dir($mobilePath)) {
+			if ($fileInfo->isDir() && $fileInfoName[0] != '.' && is_dir($mobilePath)) {
 				$appDesc = new EyeMobileApplicationDescriptor($fileInfoName);
 				$appMeta = $appDesc->getMeta();
 				$sysParams = $appMeta->get('eyeos.application.systemParameters');
