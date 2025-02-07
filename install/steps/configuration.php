@@ -6,15 +6,10 @@ function toptext() {
 
 function getContent() {
     if (isset($_POST['mysqlhost'])) {
-        $link = mysql_connect($_POST['mysqlhost'], $_POST['mysqluser'], $_POST['mysqlpass']);
-        if (!$link) {
-            echo '<p>Unable to connect to database: ' . mysql_error() . '</p>';
-            echo '<p><a href="index.php?step=configuration">Click here to go back</a></p>';
-            return;
-        }
-
-        if (!mysql_select_db($_POST['mysqldb'], $link)) {
-            echo '<p>Unable to select database: ' . mysql_error() . '</p>';
+        $link = new mysqli($_POST['mysqlhost'], $_POST['mysqluser'], $_POST['mysqlpass'], $_POST['mysqldb']);
+        
+        if ($link->connect_error) {
+            echo '<p>Unable to connect to database: ' . $link->connect_error . '</p>';
             echo '<p><a href="index.php?step=configuration">Click here to go back</a></p>';
             return;
         }
@@ -45,7 +40,7 @@ function getContent() {
                 $line = trim($line);
                 $buffer .= $line . "\r\n";
                 if (substr($line, -1, 1) == ';') {
-                    mysql_query($buffer, $link);
+                    $link->query($buffer);
                     $buffer = "";
                 }
             }
@@ -53,9 +48,9 @@ function getContent() {
 
         $rootpass = sha1($_POST['eyerootpass'] . sha1($_POST['eyerootpass']));
 
-        $sql = 'UPDATE eyeosuser set password = \'' . $rootpass . '\' where id = \'eyeID_EyeosUser_root\'';
+        $sql = 'UPDATE eyeosuser SET password = \'' . $rootpass . '\' WHERE id = \'eyeID_EyeosUser_root\'';
 
-        mysql_query($sql, $link);
+        $link->query($sql);
 
         $settingstext = getSettingsText($_POST['mysqlhost'], $_POST['mysqldb'], $_POST['mysqluser'], $_POST['mysqlpass']);
 
